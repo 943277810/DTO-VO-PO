@@ -1,0 +1,42 @@
+server:
+  port: 8087
+#jdbc配置
+spring:
+  application:
+    name: bes-data
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost/bigdata?serverTimezone=Hongkong&useUnicode=true&characterEncoding=utf-8&useSSL=false&allowPublicKeyRetrieval=true
+    username: root
+    password: root
+#mybatis配置
+mybatis:
+  #实体类所在包名
+  type-aliases-package: com.bosssoft.hr.train.chp2.pojo
+#通用mapper配置
+mapper:
+  #公用接口类路径
+  mappers: tk.mybatis.mapper.common.Mapper
+  identity: MYSQL
+redis:
+  host: 127.0.0.1
+  port: 6379
+  password:
+  pool:
+    max-active: 8
+    max-wait: 1
+    max-idle: 8
+    min-idle: 0
+  timeout: 0
+
+
+
+pagehelper:
+
+  helperDialect: mysql
+
+  reasonable: true
+
+  supportMethodsArguments: true
+
+  params: count=countSql

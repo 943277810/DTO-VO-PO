@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <title></title>
+</head>
+<body>
+    <h2>数据字典示例</h2>
+    <h3 th:text="${port}"></h3>
+    <div align="center">
+        <div>
+            <form action="/searchByCondition" method="get">
+                <label for="searchName">字典名称</label>
+                <input type="text" id="searchName" name="name" />
+                <label for="searchCategory">字典类型</label>
+                <input type="text" id="searchCategory" name="category"/>
+                <input type="submit" value="查询"/>
+            </form>
+        </div>
+        <div>
+            <a th:href="@{/newDictionary}"><img th:src="@{icons/plus.png}" th:alt="新建" th:width="20px">增加</a>
+<!--            <a th:href="@{/deleteDictionary}"><img th:src="@{icons/trash-a.png}" th:alt="删除" th:width="20px">删除</a>-->
+<!--            <a th:href="@{/editDictionary}"><img th:src="@{icons/edit.png}" th:alt="编辑" th:width="20px">修改</a>-->
+        </div>
+        <table border="1">
+            <thead>
+            <tr>
+                <th></th>
+                <th>字典名</th>
+                <th>字典类型</th>
+                <th>字典值</th>
+                <th>更新时间</th>
+                <th>备注信息</th>
+                <th>状态</th>
+                <th>操作</th>
+            </tr>
+            </thead>
+            <tbody>
+            <div th:each="dictionary:${dictionaryList}">
+                <tr>
+                    <td><input type="checkbox" /></td>
+                    <td th:text="${dictionary.name}"></td>
+                    <td th:text="${dictionary.category}"></td>
+                    <td th:text="${dictionary.value}"></td>
+                    <td th:text="${#dates.format(dictionary.updatedTime,'yyyy-MM-dd HH:mm:ss')}"></td>
+                    <td th:text="${dictionary.remark}"></td>
+                    <td th:switch="${dictionary.status}">
+                        <span th:case="1">正常</span>
+                        <span th:case="0">不可用</span>
+                    </td>
+                    <td>
+                        <a th:href="@{/newDictionary}"><img th:src="@{icons/plus.png}" th:alt="新建" th:width="20px"></a>
+                        <a th:href="@{/editDictionary(id=${dictionary.categoryId})}"><img th:src="@{icons/edit.png}" th:alt="编辑" th:width="20px"></a>
+                        <a th:href="@{/deleteDictionary(id=${dictionary.categoryId})}"><img th:src="@{icons/trash-a.png}" th:alt="删除" th:width="20px" onclick="deleteConfirm()"></a>
+                    </td>
+                </tr>
+            </div>
+
+
+            </tbody>
+        </table>
+    </div>
+
+</body>
+<script type="text/javascript">
+    function deleteConfirm(){
+        if (!confirm("确实要删除这条记录吗？")){
+            window.event.returnValue = false;
+        }
+    }
+</script>
+</html>

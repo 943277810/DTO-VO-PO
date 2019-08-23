@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <style>
+        .red-text {color: red}
+    </style>
+</head>
+<body>
+    <h2>数据字典示例--新增</h2>
+    <form action="/save" method="post">
+        <table>
+            <thead></thead>
+            <tbody>
+            <tr>
+                <td class="red-text">*</td>
+                <td>字典名</td>
+                <td><input type="text" id="txtName" name="name" /></td>
+            </tr>
+            <tr>
+                <td class="red-text">*</td>
+                <td>字典类型</td>
+                <td><input type="text" id="txtCategory" name="category" /></td>
+
+            </tr>
+            <tr>
+                <td class="red-text">*</td>
+                <td>字典值</td>
+                <td><input type="text" id="txtValue" name="value"  /></td>
+
+            </tr>
+            <tr>
+                <td class="red-text">*</td>
+                <td>是否启用</td>
+                <td>
+                    <input type="radio" id="radStatus1" name="status" value="1"/>是
+                    <input type="radio" id="radStatus0" name="status" value="0"/>否
+                </td>
+
+            </tr>
+            <tr>
+                <td class="red-text"></td>
+                <td>备注信息</td>
+                <td><input type="text" id="txtRemark" name="remark" /></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td><input type="submit" value="保存"/></td>
+            </tr>
+            </tbody>
+
+        </table>
+    </form>
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <title>新建</title>
+    <style>
+        .red-text {color: red}
+    </style>
+
+</head>
+<body>
+<h2>数据字典示例--编辑</h2>
+    <form action="/update" method="post">
+        <table>
+            <thead></thead>
+            <tbody>
+                <tr>
+                    <td class="red-text">*</td>
+                    <td>字典名</td>
+                    <td><input type="text" id="txtName" name="name" th:field="${dictionary.name}" /></td>
+                </tr>
+                <tr>
+                    <td class="red-text">*</td>
+                    <td>字典类型</td>
+                    <td><input type="text" id="txtCategory" name="category" th:field="${dictionary.category}" /></td>
+
+                </tr>
+                <tr>
+                    <td class="red-text">*</td>
+                    <td>字典值</td>
+                    <td><input type="text" id="txtValue" name="value" th:field="${dictionary.value}" /></td>
+
+                </tr>
+                <tr>
+                    <td class="red-text">*</td>
+                    <td>是否启用</td>
+                    <td>
+                        <input type="radio" id="radStatus1" name="status" value="1" th:checked="${dictionary.status==1}" />是
+                        <input type="radio" id="radStatus0" name="status" value="0" th:checked="${dictionary.status==0}" />否
+                    </td>
+
+                </tr>
+                <tr>
+                    <td class="red-text"></td>
+                    <td>备注信息</td>
+                    <td><input type="text" id="txtRemark" name="remark" th:field="${dictionary.remark}" /></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td><input type="submit" value="保存"/></td>
+                </tr>
+            </tbody>
+        </table>
+        <input type="hidden" name="categoryId" th:field="${dictionary.categoryId}"/>
+        <input type="hidden" name="version" th:field="${dictionary.version}"/>
+        <input type="hidden" name="createdBy" th:field="${dictionary.createdBy}"/>
+        <input type="hidden" name="createdTime" th:field="${dictionary.createdTime}"/>
+        <input type="hidden" name="orgId" th:field="${dictionary.orgId}"/>
+    </form>
+</body>
+</html>
